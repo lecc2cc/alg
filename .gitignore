@@ -1,3 +1,5 @@
 *.class
-.DS_Stone
-.idea
+.DS_Stone/
+.idea/
+target/
+
