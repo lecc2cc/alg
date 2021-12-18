@@ -12,7 +12,28 @@ public class SolutionSort {
      */
     public static void main(String[] args) {
         // Selection
-        testSelect();
+        // testSelect();
+
+        //testInsert();
+        testInsert1();
+    }
+
+    public static void testInsert1() {
+        int[][] numsList = getExampleList();
+        for (int[] nums : numsList) {
+            Fmt.println("input: ", Arrays.toString(nums));
+            Insertion.insert1(nums);
+            Fmt.println("solution: ", Arrays.toString(nums));
+        }
+    }
+
+    public static void testInsert() {
+        int[][] numsList = getExampleList();
+        for (int[] nums : numsList) {
+            Fmt.println("input: ", Arrays.toString(nums));
+            Insertion.insert(nums);
+            Fmt.println("solution: ", Arrays.toString(nums));
+        }
     }
 
     public static void testSelect() {
