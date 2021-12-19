@@ -18,7 +18,7 @@ public class Selection {
      *
      * @param nums
      */
-    public static void select(int[] nums) {
+    public void select(int[] nums) {
         // 遍历模拟
         //  0  1  2  3  4  5  6
         // [9, 3, 2, 1, 5, 0, 7]

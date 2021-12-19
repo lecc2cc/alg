@@ -15,32 +15,59 @@ public class SolutionSort {
         // testSelect();
 
         //testInsert();
-        testInsert1();
+        //testInsert1();
+
+        //testBubble();
+
+        testShell();
     }
 
-    public static void testInsert1() {
+    public static void testShell() {
+        Shell ins = new Shell();
         int[][] numsList = getExampleList();
         for (int[] nums : numsList) {
             Fmt.println("input: ", Arrays.toString(nums));
-            Insertion.insert1(nums);
+            ins.shell(nums);
+            Fmt.println("solution: ", Arrays.toString(nums));
+        }
+    }
+
+    public static void testBubble() {
+        Bubble ins = new Bubble();
+        int[][] numsList = getExampleList();
+        for (int[] nums : numsList) {
+            Fmt.println("input: ", Arrays.toString(nums));
+            ins.bub1(nums);
+            Fmt.println("solution: ", Arrays.toString(nums));
+        }
+    }
+
+    public static void testInsert1() {
+        Insertion ins = new Insertion();
+        int[][] numsList = getExampleList();
+        for (int[] nums : numsList) {
+            Fmt.println("input: ", Arrays.toString(nums));
+            ins.insert1(nums);
             Fmt.println("solution: ", Arrays.toString(nums));
         }
     }
 
     public static void testInsert() {
+        Insertion ins = new Insertion();
         int[][] numsList = getExampleList();
         for (int[] nums : numsList) {
             Fmt.println("input: ", Arrays.toString(nums));
-            Insertion.insert(nums);
+            ins.insert(nums);
             Fmt.println("solution: ", Arrays.toString(nums));
         }
     }
 
     public static void testSelect() {
+        Selection ins = new Selection();
         int[][] numsList = getExampleList();
         for (int[] nums : numsList) {
             Fmt.println("input: ", Arrays.toString(nums));
-            Selection.select(nums);
+            ins.select(nums);
             Fmt.println("solution: ", Arrays.toString(nums));
         }
     }

@@ -20,7 +20,7 @@ public class Insertion {
      *
      * @param nums
      */
-    public static void insert(int[] nums) {
+    public void insert(int[] nums) {
         //  0   1  2  3  4  5
         // [10, 9, 8, 7, 6, 5]
         //      j=1
@@ -47,7 +47,7 @@ public class Insertion {
      *
      * @param nums
      */
-    public static void insert1(int[] nums) {
+    public void insert1(int[] nums) {
         // 先找出最小，保证第一个最小，即已排好序
         for (int i = nums.length - 1; i > 0; i--) {
             // 后面的小于前面， 交换位置
