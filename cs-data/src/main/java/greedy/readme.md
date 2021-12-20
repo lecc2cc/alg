@@ -2,8 +2,7 @@
 
 贪心算法是一种
 + 在每一步选择中都采取`在当前状态下的最优决策`(局部最优)
-+ b并希望由此导致的最终结果也是全局最优
-的算法。
++ 并希望由此导致的最终结果也是全局最优的算法。
 
 贪心算法`不一定`能得到正确的结果，除非可以证明，按照适当的
 方法做出局部最优选择，依然可以得到全局最优结果。
@@ -11,6 +10,8 @@
 如果不要求绝对最佳答案，那么有时用简单的贪心算法生成
 近似答案，而不是使用一般说来产生准确答案需要的复杂算法。
 
+
+能用贪心求解的题目，也都可以用搜索或动态规划求解，但是贪心一般是最高效的。
 
 #### 当前最优决策
 
@@ -35,7 +36,7 @@ ans: 46 = 20 + 20 + 5 + 1
 + 一个5面额等价于5个1面额
 
 每次都选尽量大的面额，都可以兑换成N个M面额，即尽量选大的决策
-包容了小面额选择的决策，而最大面额需要硬币更小，从而结果更优。
+包容了小面额选择的决策，而最大面额需要硬币更少，从而结果更优。
 
 贪心算法证明局部更优的方法：
 + 反证法
@@ -70,5 +71,72 @@ coins = [10, 9, 1], amount = 18
 但是不包含9面额的决策，所以并不是最优决策。
 
 
+#### 例子
+
+[柠檬水找零](https://leetcode.com/problems/lemonade-change/)
+
+```
+bills = [5, 5, 5, 10, 20]
+
+5 (收取一张5)
+5 (收取一张5)
+5 (收取一张5)
+10 (返回一张5，剩余两张5，一张10)
+20 (返还15， 一张10和一张5)
+
+
+bills = [10,10]
+不能找零
+```
+顾客每次只能支付5、10或20。如果能用一个10块找零，那么也可以用两个5找零。
+也就是说，做出"用10找零"这个决策，未来的可能性包含了"用两个5找零"以后
+未来的可能性 -- 决策包容性。
+
+贪心的思路： 优先使用面额较大的找零。
+
+实现思路：
+```java
+class Solution {
+    public boolean lemonadeChange(int[] bills) {
+        coinMap.put(5, 0);
+        coinMap.put(10, 0);
+        coinMap.put(20, 0);
+        
+        for (int bill : bills) {
+            // 收取
+            coinMap.put(bill, coinMap.get(bill) + 1);
+            
+            // 返还bill - 5的，需要找零
+            if (!exchange(bill - 5)) {
+                return false;
+            }
+        }
+        
+        return true;
+        
+    }
+    
+    private Map<Integer, Integer> coinMap = new HashMap<>(3);
+    
+    /**
+     * 找零，有效找大面额
+     */
+    private boolean exchange(int amount) {
+        List<Integer> choosens = Arrays.asList(20, 10, 5);
+        // 优先扣除大面额
+        for (Integer ch : choosens) {
+            // 可以扣除，且有收取的面额
+            while(amount >= ch && coinMap.get(ch) >0) {
+                // 减少金额
+                amount -= ch;
+                // 减少收取的数量
+                coinMap.put(ch, coinMap.get(ch) - 1);
+            }
+        }
+        // 可以找零
+        return amount == 0;
+    }
+}
+```
 
 
