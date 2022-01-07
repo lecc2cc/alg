@@ -80,7 +80,6 @@ public class MapTrie {
     /**
      * 节点
      *
-     * 每个都有26个子节点表示对应的单词的字符
      */
     class Node {
         /**
@@ -88,11 +87,7 @@ public class MapTrie {
          */
         int count;
 
-        /**
-         * 26个字母，表示一个词的字符
-         *
-         * 0表示a, 1表示b, ...
-         */
+
         Map<Character, Node> child;
 
         Node() {
