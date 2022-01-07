@@ -35,7 +35,7 @@ public class WordSearch2 {
             }
         }
 
-        return new ArrayList<String>(ans.keySet());
+        return new ArrayList<String>(ans);
     }
 
     /**
@@ -60,7 +60,7 @@ public class WordSearch2 {
         viewBuf.append(ch);
         // 是一个单词，记录答案
         if (next.count > 0) {
-            ans.put(viewBuf.toString(), 1);
+            ans.add(viewBuf.toString());
         }
 
         // 一个点没有子节点，不再用于搜索，则可以删掉
@@ -94,7 +94,7 @@ public class WordSearch2 {
     }
 
 
-    private Map<String, Integer> ans = new HashMap<>();
+    private Set<String> ans = new HashSet<>();
     private StringBuffer viewBuf = new StringBuffer();
     private int rows;
     private int cols;
