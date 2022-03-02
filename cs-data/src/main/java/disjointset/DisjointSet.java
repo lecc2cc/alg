@@ -15,7 +15,7 @@ public class DisjointSet {
         if (x == fa[x]) {
             return x;
         }
-        return fa[x] = find(x);
+        return fa[x] = find(fa[x]);
     }
 
     public void unionSet(int x, int y) {
