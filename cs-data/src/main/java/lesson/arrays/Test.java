@@ -8,7 +8,31 @@ public class Test {
 
         // test_MoveZero();
 
-        test_MergeSorted();
+        // test_MergeSorted();
+
+        // test_PlusOne();
+
+        test_ArrList();
+    }
+
+    private static void test_ArrList() {
+        ArrList ins = new ArrList(10);
+        Fmt.println(ins);
+        for (int i=0; i< 12; i++) {
+            ins.append(i+100);
+        }
+
+        Fmt.println(ins);
+
+    }
+
+
+    private static void test_PlusOne() {
+        int[] nums = new int[]{9,9,9};
+
+        PlusOne ins = new PlusOne();
+        Fmt.println(nums);
+        Fmt.println(ins.plusOne(nums));
     }
 
     private static void test_MergeSorted() {
