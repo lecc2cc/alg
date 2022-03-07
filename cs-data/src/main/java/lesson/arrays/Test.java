@@ -12,7 +12,35 @@ public class Test {
 
         // test_PlusOne();
 
-        test_ArrList();
+        // test_ArrList();
+
+        test_ReverseGroup();
+    }
+
+    private static void test_ReverseGroup() {
+        ListNode protect = new ListNode(0);
+        for (int i = 10; i > 0; i--) {
+            ListNode n = new ListNode(i);
+            n.next = protect.next;
+            protect.next = n;
+        }
+
+        ListNode p = protect.next;
+        while(p != null) {
+            System.out.print(p + " -> ");
+            p = p.next;
+        }
+        System.out.println("\n");
+
+        ReverseGroup ins = new ReverseGroup();
+        p = ins.reverseKGroup(protect.next, 2);
+
+        while(p != null) {
+            System.out.print(p + " -> ");
+            p = p.next;
+        }
+        System.out.println("\n");
+
     }
 
     private static void test_ArrList() {
